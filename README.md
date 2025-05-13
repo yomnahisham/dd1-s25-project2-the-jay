@@ -1,8 +1,7 @@
 # Digital Design 1 - Project 2: 8x8 Signed Serial-Parallel Multiplier
 
 ## Project Overview
-This repository contains the implementation of an 8x8 Signed Serial-Parallel Multiplier (SPM) for Digital Design 1 (DD1). The project involves designing and implementing a digital circuit that multiplies two 8-bit signed binary numbers, where one operand is processed serially while the other is available in parallel. The implementation will be demonstrated on the Basys 3 FPGA board using the Artix 7 FPGA.
-
+This repository contains the implementation of an 8x8 Signed Serial-Parallel Multiplier (SPM) for Digital Design 1 (DD1). The project involves designing and implementing a digital circuit that multiplies two 8-bit signed binary numbers, where one operand is processed serially while the other is available in parallel. The implementation will be demonstrated on the Basys 3 FPGA board.
 ## Project Structure
 ```
 ├── Diagram/
