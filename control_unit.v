@@ -4,15 +4,11 @@ module control_unit(
     input wire BTNC,          // center button (start multiplication)
     input wire BTNL,          // left button (scroll left)
     input wire BTNR,          // right button (scroll right)
-    input wire [7:0] SW,      // switches for multiplier input
-    input wire [7:0] SW2,     // switches for multiplicand input
     output wire load_data,    // signal to load data into registers
     output wire start_mult,   // signal to start multiplication
     output wire scroll_left,  // signal to scroll display left
     output wire scroll_right, // signal to scroll display right
     output wire mult_done,    // signal indicating multiplication is complete
-    output wire [7:0] multiplier_out,    // output of multiplier register
-    output wire [7:0] multiplicand_out,  // output of multiplicand register
     output wire shift_en,     // enable signal for multiplier shift
     output wire extend,       // signal to enable sign extension
     output wire mult_active   // signal indicating multiplication is in progress
@@ -70,9 +66,5 @@ module control_unit(
     assign mult_active = (state == MULT);
     assign shift_en = (state == MULT);  // enable shifting during multiplication
     assign extend = (state == MULT);    // enable sign extension during multiplication
-
-    // instantiate registers for initial values
-    parallel_register #(.x(8)) multiplicand_reg (.clk(clk), .rst(rst), .load(load_data), .data_in(SW2), .q(multiplicand_out));
-    parallel_register #(.x(8)) multiplier_reg (.clk(clk), .rst(rst), .load(load_data), .data_in(SW), .q(multiplier_out));
 
 endmodule 
