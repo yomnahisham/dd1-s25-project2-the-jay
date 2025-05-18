@@ -1,6 +1,7 @@
 module control_unit(
     input wire clk,           // system clock
     input wire rst,           // reset signal
+    input wire clr,           // clear signal
     input wire BTNC,          // center button (start multiplication)
     input wire BTNL,          // left button (scroll left)
     input wire BTNR,          // right button (scroll right)
@@ -27,8 +28,8 @@ module control_unit(
     parameter DONE = 3'b011;
 
     // state register
-    always @(posedge clk or posedge rst) 
-        if (rst)
+    always @(posedge clk) 
+        if (rst || clr)
             state <= IDLE;
         else
             state <= next_state;
