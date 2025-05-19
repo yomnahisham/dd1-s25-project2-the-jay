@@ -22,7 +22,7 @@
 
 module counter #(parameter x = 3, n = 6) (
     input clk, rst, en,
-    output [x-1:0] count,
+    //output [x-1:0] count,
     output done
     );
     

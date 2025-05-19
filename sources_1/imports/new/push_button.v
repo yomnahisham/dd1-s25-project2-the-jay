@@ -19,13 +19,32 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-module push_button(input clk, rst, x, output z);
-   wire clkout, unbounce, synced;
-   clkdivider #(250000) giveme200hz(clk, rst, clkout);
-   debouncer bouncer(clkout, rst, x, unbounce);
-   synch sun (clkout, rst, unbounce, synced);
-   fsm detector(clkout, rst, synced, z);
+module push_button(
+    input clk, rst, x,
+    output z
+    );
+    
+    wire db_out;
+    debouncer db(
+        .clk(clk_out),
+        .rst(rst),
+        .in(x),
+        .out(db_out)
+    );
+    
+    wire sig_out;
+    synch sun(
+        .clk(clk_out),
+        .sig(db_out),
+        .sig1(sig_out)
+    );
+    
+    fsm detector(
+        .clk(clk_out),
+        .rst(rst),
+        .x(sig_out),
+        .z(z)
+    );
+    
 endmodule
-
 

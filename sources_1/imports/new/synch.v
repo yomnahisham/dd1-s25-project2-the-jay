@@ -19,22 +19,16 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module synch(
-input wire clk,
-input wire rst,
-input wire s,
-output reg s1
-);
-reg m;
-always @(posedge clk, posedge rst) begin
-if(rst) begin 
-    m <= 0;
-    s1 <= 0;
-end else begin 
-    m <= s;
-    s1 <= m;
-end 
-end
+    input clk, sig,
+    output reg sig1
+    );
+    
+    reg meta;
+    always @(posedge clk) begin
+        meta <= sig;
+        sig1 <= meta;
+    end
+    
 endmodule
 
