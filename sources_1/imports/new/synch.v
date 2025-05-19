@@ -31,4 +31,3 @@ module synch(
     end
     
 endmodule
-

@@ -24,6 +24,7 @@ module SPM(
     input clk,
     input rst,
     input clr,
+    input en,
     input [7:0] multiplicand,
     input [7:0] multiplier,
     output [15:0] product
@@ -35,18 +36,9 @@ complement complement(
     .clk(clk),
     .rst(rst),
     .clr(clr),
-    .data_in(multiplicand[7] & multiplier[0]),
-    .data_out(product[15])
+    .data_in(multiplicand[1] & multiplier[0]),
+    .data_out(product[7])
 );
-
-//csa csa1(
-//    .clk(clk),
-//    .rst(rst),
-//    .clr(clr),
-//    .x(multiplicand[6] & multiplier[0]),
-//    .y(product[7]),
-//    .out(product[6])   
-//);
 
 genvar i;
 generate // generate 7 csa instances
@@ -55,13 +47,20 @@ generate // generate 7 csa instances
             .clk(clk),
             .rst(rst),
             .clr(clr),
-            .x(multiplicand[i + 8] & multiplier[0]),
-            .y(product[i+9]),
-            .out(product[i + 8])
+            .x(multiplicand[i] & multiplier[0]),
+            .y(product[i+1]),
+            .out(product[i])
         );
     end
 endgenerate
 
+//always @(posedge clk or rst) begin
+//    if (rst || clr) begin
+//        product <= 0;
+//    end else if (en) begin
+//        product <= {1'b0, product[14:0]}; // shift right
+//    end
+//end
 
 
 endmodule

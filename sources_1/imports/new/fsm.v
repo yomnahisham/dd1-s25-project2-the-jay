@@ -19,8 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module RisingEdgeDetector (
-    input clk, rst, x,
+module fsm (
+    input clk, rst, y,
     output z
     );
     
@@ -28,16 +28,16 @@ module RisingEdgeDetector (
     
     parameter [1:0] A = 2'b00, B = 2'b01, C = 2'b10;
     
-    always @ (x or state) begin
+    always @ (y or state) begin
         case(state)
             A:
-                if (x == 0) nextState = A;
+                if (y == 0) nextState = A;
                 else nextState = B;
             B:
-                if (x == 0) nextState = A;
+                if (y == 0) nextState = A;
                 else nextState = C;
             C:
-                if (x == 0) nextState = A;
+                if (y == 0) nextState = A;
                 else nextState = C;
         endcase
     end

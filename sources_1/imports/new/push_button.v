@@ -26,7 +26,7 @@ module push_button(
     
     wire db_out;
     debouncer db(
-        .clk(clk_out),
+        .clk(clk),
         .rst(rst),
         .in(x),
         .out(db_out)
@@ -34,17 +34,18 @@ module push_button(
     
     wire sig_out;
     synch sun(
-        .clk(clk_out),
+        .clk(clk),
         .sig(db_out),
         .sig1(sig_out)
     );
     
+    
+    
     fsm detector(
-        .clk(clk_out),
-        .rst(rst),
-        .x(sig_out),
+        .clk(clk), 
+        .rst(rst), 
+        .y(sig_out),
         .z(z)
     );
     
 endmodule
-
