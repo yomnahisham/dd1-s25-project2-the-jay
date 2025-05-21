@@ -17,6 +17,7 @@ module wrapper (
     input BTNR,          // right button (scroll right)
     input [7:0] multiplicand,
     input [7:0] multiplier,
+    output done,
     output [0:6] seg,
     output [3:0] an
 );
@@ -133,5 +134,8 @@ display display(
     .seg(seg),
     .an(an)
 );
+
+
+assign done = multiplication_done;
 
 endmodule

@@ -101,6 +101,6 @@ set_property IOSTANDARD LVCMOS33 [get_ports an[2] ]
 set_property PACKAGE_PIN V4 [get_ports an[3]]
 set_property IOSTANDARD LVCMOS33 [get_ports an[3] ]
 
-set_property PACKAGE_PIN E19 [get_ports done]
+set_property PACKAGE_PIN L1 [get_ports done]
 set_property IOSTANDARD LVCMOS33 [get_ports done]
 
