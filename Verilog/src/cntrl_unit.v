@@ -33,7 +33,8 @@ module control_unit(
     output  scroll_left,  // signal to scroll display left
     output  scroll_right,  // signal to scroll display right
     input  mult_done,    // signal indicating multiplication is complete
-    output  mult_active   // signal indicating multiplication is in progress
+    output  mult_active,   // signal indicating multiplication is in progress
+    output done
 );
 
    
@@ -93,5 +94,5 @@ module control_unit(
     
     assign mult_active = (state == MULT);
     assign extend = (state == MULT);    // enable sign extension during multiplication
-
+    assign done = (state== DONE); 
 endmodule 

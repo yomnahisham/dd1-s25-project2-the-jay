@@ -66,7 +66,8 @@ control_unit control_unit(
     .scroll_left(scroll_left),
     .scroll_right(scroll_right),
     .mult_done(multiplication_done),
-    .mult_active(mult_active)
+    .mult_active(mult_active),
+    .done (done)
 );
 
 
@@ -136,6 +137,6 @@ display display(
 );
 
 
-assign done = multiplication_done;
+//assign done = multiplication_done;
 
 endmodule
